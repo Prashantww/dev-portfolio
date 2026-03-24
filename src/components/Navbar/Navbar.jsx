@@ -47,7 +47,14 @@ function MagneticLink({ label, isActive, onClick }) {
 
     wrap.addEventListener("mouseenter", onMouseEnter);
     wrap.addEventListener("mouseleave", onMouseLeave);
-    wrap.addEventListener("mousemove", onMouseMove);
+
+    const isTouchDevice = window.matchMedia(
+      "(hover: none) and (pointer: coarse)",
+    ).matches;
+    if (!isTouchDevice) {
+      wrap.addEventListener("mousemove", onMouseMove);
+    }
+
     return () => {
       wrap.removeEventListener("mouseenter", onMouseEnter);
       wrap.removeEventListener("mouseleave", onMouseLeave);
@@ -151,6 +158,7 @@ export default function Navbar() {
     if (isAnimating.current) return;
     isAnimating.current = true;
     setMenuOpen(true);
+    document.body.style.overflow = "hidden";
 
     const overlay = overlayRef.current;
     const mobileLinks = overlay.querySelectorAll("[data-mobile-link]");
@@ -226,6 +234,7 @@ export default function Navbar() {
           gsap.set(overlay, { display: "none" });
           setMenuOpen(false);
           isAnimating.current = false;
+          document.body.style.overflow = "";
         },
       })
       .to(mobileLinks, {
