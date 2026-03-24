@@ -1,0 +1,42 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Root defaults */
+html,
+body {
+  width: 100%;
+  height: 100%;
+  font-family: "Outfit", sans-serif;
+  background-color: #fff;
+  color: #000;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Links */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Buttons */
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: none;
+}
+
+/* Lists */
+ul,
+ol {
+  list-style: none;
+}
