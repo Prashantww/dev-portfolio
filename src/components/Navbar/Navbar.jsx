@@ -149,6 +149,8 @@ export default function Navbar() {
     if (menuOpen) return;
     gsap.to(navRef.current, {
       color: theme === "dark" ? "#ffffff" : "#0a0a0a",
+      "--nav-border":
+        theme === "dark" ? "rgba(255, 255, 255, 0.218)" : "rgba(0, 0, 0, 0.15)",
       duration: 0.4,
       ease: "power2.inOut",
     });

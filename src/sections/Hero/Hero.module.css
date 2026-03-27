@@ -1,5 +1,204 @@
+/* Hero.module.css */
+
+/* ── Section ──────────────────────────────────────────────────────────────── */
 .hero {
-  width: 100vw;
-  height: 100vh;
-  background-color: black;
+  display: flex;
+  align-items: stretch;
+  min-height: 100vh;
+  background: #0a0a0a;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+/* ── Text pane ────────────────────────────────────────────────────────────── */
+.textPane {
+  flex: 0 0 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 52px 72px 52px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Badge ────────────────────────────────────────────────────────────────── */
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  opacity: 0; /* GSAP animates in */
+}
+
+/* the horizontal rule */
+.badge::before {
+  content: "";
+  display: block;
+  width: 120px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.3);
+  flex-shrink: 0;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #3ddc84; /* green — "live / active" */
+  flex-shrink: 0;
+
+  /* subtle pulse */
+  animation: pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.85);
+  }
+}
+
+.badgeText {
+  font-family: "Outfit", sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+}
+
+/* ── Heading ──────────────────────────────────────────────────────────────── */
+.heading {
+  font-family: "Outfit", sans-serif;
+  font-size: clamp(28px, 3.2vw, 50px);
+  font-weight: 500;
+  line-height: 121%;
+  letter-spacing: -0.02em;
+  margin: 0 0 24px 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.line {
+  display: block;
+  opacity: 0; /* GSAP animates in */
+}
+
+/* ── Subtitle ─────────────────────────────────────────────────────────────── */
+.sub {
+  font-family: "Outfit", sans-serif;
+  font-size: clamp(13px, 1.1vw, 16px);
+  font-weight: 400;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.45);
+  max-width: 400px;
+  margin: 0 0 40px 0;
+  opacity: 0; /* GSAP animates in */
+}
+
+/* ── Buttons ──────────────────────────────────────────────────────────────── */
+.buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.btn {
+  font-family: "Outfit", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  padding: 12px 28px;
+  border-radius: 0;
+  cursor: pointer;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease;
+  opacity: 0; /* GSAP animates in */
+}
+
+.btnPrimary {
+  background: #ffffff;
+  color: #0a0a0a;
+  border: 1px solid #ffffff;
+}
+
+.btnPrimary:hover {
+  background: transparent;
+  color: #ffffff;
+}
+
+.btnOutline {
+  background: transparent;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.btnOutline:hover {
+  border-color: #ffffff;
+}
+
+/* ── Gallery pane ─────────────────────────────────────────────────────────── */
+.galleryPane {
+  flex: 0 0 50%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+  }
+
+  .textPane {
+    flex: unset;
+    padding: 120px 28px 48px 28px; /* top clears the fixed navbar */
+    justify-content: flex-start;
+  }
+
+  .heading {
+    font-size: clamp(32px, 8.5vw, 52px);
+    letter-spacing: -0.03em;
+  }
+
+  .sub {
+    font-size: 15px;
+    max-width: 100%;
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  .buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 18px 28px;
+    font-size: 15px;
+    text-align: center;
+  }
+
+  .galleryPane {
+    flex: unset;
+    width: 100%;
+    min-height: 50vh;
+  }
+
+  .badge::before {
+    width: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .textPane {
+    padding: 110px 24px 40px 24px;
+  }
 }

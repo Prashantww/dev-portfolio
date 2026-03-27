@@ -12,11 +12,16 @@
   align-items: center;
   justify-content: space-between;
 
-  padding: 22px 26px;
+  padding: 10px 26px;
 
   background: transparent;
   color: #ffffff;
   will-change: color;
+
+  backdrop-filter: blur(17px);
+
+  border-bottom: solid 0.5px var(--nav-border);
+  --nav-border: rgba(255, 255, 255, 0.218); /* default for dark */
 }
 
 /* ── Logo ─────────────────────────────────────────────────────────────────── */
