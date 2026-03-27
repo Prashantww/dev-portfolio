@@ -103,6 +103,7 @@ export default function Navbar() {
   const overlayRef = useRef(null);
   const line1Ref = useRef(null);
   const line2Ref = useRef(null);
+  const borderRef = useRef(null);
 
   const [theme, setTheme] = useState("dark");
   const [activeLink, setActiveLink] = useState("Home");
@@ -125,6 +126,12 @@ export default function Navbar() {
         "-=0.4",
       );
     }
+    tl.fromTo(
+      borderRef.current,
+      { scaleX: 0 },
+      { scaleX: 1, duration: 0.8, ease: "power3.out" },
+      "-=0.4",
+    );
   }, []);
 
   // Section theme detection
@@ -264,6 +271,8 @@ export default function Navbar() {
         <span ref={logoRef} className={styles.logo}>
           Prashant Warghude
         </span>
+
+        <span ref={borderRef} className={styles.navBorder} />
 
         {/* Desktop links */}
         <ul ref={linksRef} className={styles.navLinks} role="list">

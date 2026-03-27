@@ -25,8 +25,8 @@
 .badge {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 20px;
+  gap: 8px;
+  margin-bottom: 12px;
   opacity: 0; /* GSAP animates in */
 }
 
@@ -34,39 +34,47 @@
 .badge::before {
   content: "";
   display: block;
-  width: 120px;
+  width: 192px;
   height: 1px;
   background: rgba(255, 255, 255, 0.3);
   flex-shrink: 0;
 }
 
 .dot {
+  position: relative;
+  width: 12px;
+  height: 12px;
+  border-radius: 9999px;
+  background: #1a8c1a;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dotInner {
   width: 8px;
   height: 8px;
-  border-radius: 50%;
-  background: #3ddc84; /* green — "live / active" */
-  flex-shrink: 0;
-
-  /* subtle pulse */
+  border-radius: 9999px;
+  background: #00ff00;
   animation: pulse 2.4s ease-in-out infinite;
 }
 
 @keyframes pulse {
   0%,
   100% {
-    opacity: 1;
     transform: scale(1);
+    opacity: 1;
   }
   50% {
-    opacity: 0.5;
-    transform: scale(0.85);
+    transform: scale(0.7);
+    opacity: 0.7;
   }
 }
 
 .badgeText {
-  font-family: "Outfit", sans-serif;
-  font-size: 11px;
-  font-weight: 500;
+  font-size: 10px;
+  font-weight: 300;
   letter-spacing: 0.14em;
   color: rgba(255, 255, 255, 0.5);
   text-transform: uppercase;
@@ -74,33 +82,39 @@
 
 /* ── Heading ──────────────────────────────────────────────────────────────── */
 .heading {
-  font-family: "Outfit", sans-serif;
   font-size: clamp(28px, 3.2vw, 50px);
-  font-weight: 500;
-  line-height: 121%;
+  font-weight: 400;
+  line-height: 100%;
   letter-spacing: -0.02em;
-  margin: 0 0 24px 0;
+  margin: 0 0 8px 0;
 
   display: flex;
   flex-direction: column;
   gap: 2px;
 }
 
+.lineWrapper {
+  display: block;
+  overflow: hidden; /* ← this is the crop */
+  padding-bottom: 0.1em; /* prevents descenders from clipping */
+}
+
 .line {
   display: block;
-  opacity: 0; /* GSAP animates in */
 }
 
 /* ── Subtitle ─────────────────────────────────────────────────────────────── */
 .sub {
-  font-family: "Outfit", sans-serif;
   font-size: clamp(13px, 1.1vw, 16px);
-  font-weight: 400;
-  line-height: 1.65;
+  font-weight: 300;
+  line-height: 119%;
   color: rgba(255, 255, 255, 0.45);
   max-width: 400px;
   margin: 0 0 40px 0;
-  opacity: 0; /* GSAP animates in */
+}
+
+.subInner {
+  display: block;
 }
 
 /* ── Buttons ──────────────────────────────────────────────────────────────── */
@@ -110,8 +124,7 @@
 }
 
 .btn {
-  font-family: "Outfit", sans-serif;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
   letter-spacing: 0.01em;
   padding: 12px 28px;
@@ -164,12 +177,12 @@
   }
 
   .heading {
-    font-size: clamp(32px, 8.5vw, 52px);
+    font-size: 32px;
     letter-spacing: -0.03em;
   }
 
   .sub {
-    font-size: 15px;
+    font-size: 17px;
     max-width: 100%;
     color: rgba(255, 255, 255, 0.4);
   }
@@ -193,12 +206,28 @@
   }
 
   .badge::before {
-    width: 80px;
+    width: 150px;
   }
 }
 
 @media (max-width: 480px) {
   .textPane {
     padding: 110px 24px 40px 24px;
+  }
+  /* .heading {
+    font-size: 28px;
+  }
+
+  .sub {
+    font-size: 14px;
+  } */
+}
+
+@media (max-width: 420px) {
+  .heading {
+    font-size: 28px;
+  }
+  .sub {
+    font-size: 14px;
   }
 }

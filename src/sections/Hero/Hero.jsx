@@ -10,35 +10,38 @@ export default function Hero() {
   const buttonsRef = useRef(null);
 
   useEffect(() => {
-    const tl = gsap.timeline({
-      defaults: { ease: "power3.out" },
-      delay: 0.6, // let navbar animate in first
-    });
+    const delay = 0.6;
 
-    tl.fromTo(
+    gsap.fromTo(
       badgeRef.current,
-      { opacity: 0, y: 16 },
-      { opacity: 1, y: 0, duration: 0.6 },
-    )
-      .fromTo(
-        // animate each line of the heading individually
-        headingRef.current.querySelectorAll(`.${styles.line}`),
-        { opacity: 0, y: 32 },
-        { opacity: 1, y: 0, duration: 0.7, stagger: 0.1 },
-        "-=0.3",
-      )
-      .fromTo(
-        subRef.current,
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.6 },
-        "-=0.3",
-      )
-      .fromTo(
-        buttonsRef.current.querySelectorAll(`.${styles.btn}`),
-        { opacity: 0, y: 16 },
-        { opacity: 1, y: 0, duration: 0.5, stagger: 0.1 },
-        "-=0.3",
-      );
+      { y: "100%", opacity: 0 },
+      { y: "0%", opacity: 1, duration: 0.6, delay, ease: "power3.out" },
+    );
+
+    gsap.fromTo(
+      headingRef.current.querySelectorAll(`.${styles.line}`),
+      { y: "100%" },
+      { y: "0%", duration: 0.8, delay, stagger: 0.1, ease: "power3.out" },
+    );
+
+    gsap.fromTo(
+      subRef.current.querySelectorAll(`.${styles.subInner}`),
+      { y: "100%" },
+      { y: "0%", duration: 0.7, delay, stagger: 0.1, ease: "power3.out" },
+    );
+
+    gsap.fromTo(
+      buttonsRef.current.querySelectorAll(`.${styles.btn}`),
+      { y: "100%", opacity: 0 },
+      {
+        y: "0%",
+        opacity: 1,
+        duration: 0.5,
+        delay,
+        stagger: 0.1,
+        ease: "power3.out",
+      },
+    );
   }, []);
 
   return (
@@ -47,21 +50,39 @@ export default function Hero() {
       <div className={styles.textPane}>
         {/* Badge */}
         <div ref={badgeRef} className={styles.badge}>
-          <span className={styles.dot} />
+          <span className={styles.dot}>
+            <span className={styles.dotInner} />
+          </span>
           <span className={styles.badgeText}>NOW CREATING</span>
         </div>
 
         {/* Heading */}
         <h1 ref={headingRef} className={styles.heading}>
-          <span className={styles.line}>Hey, I'm Prashant Warghude</span>
-          <span className={styles.line}>I build clean &amp; interactive </span>
-          <span className={styles.line}>web interfaces</span>
+          <span className={styles.lineWrapper}>
+            <span className={styles.line}>Hey, I'm Prashant&nbsp;Warghude</span>
+          </span>
+          <span className={styles.lineWrapper}>
+            <span className={styles.line}>
+              I build clean &amp; interactive web interfaces
+            </span>
+          </span>
         </h1>
 
         {/* Subtitle */}
         <p ref={subRef} className={styles.sub}>
-          The combination of my passion for design, code &amp; interaction
-          positions me in a unique place in the web design world.
+          <span className={styles.lineWrapper}>
+            <span className={styles.subInner}>
+              The combination of my passion for design, code &amp;
+            </span>
+          </span>
+          <span className={styles.lineWrapper}>
+            <span className={styles.subInner}>
+              interaction positions me in a unique place in the
+            </span>
+          </span>
+          <span className={styles.lineWrapper}>
+            <span className={styles.subInner}>web design world.</span>
+          </span>
         </p>
 
         {/* Buttons */}
