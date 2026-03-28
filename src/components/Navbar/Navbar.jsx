@@ -4,27 +4,28 @@ import styles from "./Navbar.module.css";
 
 const NAV_LINKS = ["Home", "Work", "Contact"];
 
-// ── Desktop magnetic link ────────────────────────────────────────────────────
-function MagneticLink({ label, isActive, onClick }) {
+// ── Desktop Clip-Path Reveal link ────────────────────────────────────────────────────
+function NavLink({ label, isActive, onClick }) {
   const wrapRef = useRef(null);
-  const textRef = useRef(null);
-  const underlineRef = useRef(null);
 
   useEffect(() => {
     const wrap = wrapRef.current;
-    const text = textRef.current;
-    const underline = underlineRef.current;
+    const top = wrap.querySelector("[data-top]");
+    const bottom = wrap.querySelector("[data-bottom]");
+    const underline = wrap.querySelector("[data-underline]");
 
-    gsap.set(underline, { scaleX: 0, transformOrigin: "left center" });
+    gsap.set(bottom, { y: "100%" });
 
     const onMouseEnter = () => {
+      gsap.to(top, { y: "-100%", duration: 0.4, ease: "power3.out" });
+      gsap.to(bottom, { y: "0%", duration: 0.4, ease: "power3.out" });
       gsap.to(underline, { scaleX: 1, duration: 0.35, ease: "power3.out" });
-      gsap.to(text, { opacity: 1, duration: 0.25, ease: "power2.out" });
+      gsap.to(wrap, { opacity: 1, duration: 0.25 });
     };
 
     const onMouseLeave = () => {
-      gsap.to(text, { x: 0, y: 0, duration: 0.6, ease: "elastic.out(1,0.4)" });
-      gsap.to(text, { opacity: 0.35, duration: 0.25, ease: "power2.in" });
+      gsap.to(top, { y: "0%", duration: 0.4, ease: "power3.out" });
+      gsap.to(bottom, { y: "100%", duration: 0.4, ease: "power3.out" });
       gsap.to(underline, {
         scaleX: 0,
         transformOrigin: "right center",
@@ -33,44 +34,33 @@ function MagneticLink({ label, isActive, onClick }) {
         onComplete: () =>
           gsap.set(underline, { transformOrigin: "left center" }),
       });
-    };
-
-    const onMouseMove = (e) => {
-      const rect = wrap.getBoundingClientRect();
-      gsap.to(text, {
-        x: (e.clientX - (rect.left + rect.width / 2)) * 0.35,
-        y: (e.clientY - (rect.top + rect.height / 2)) * 0.45,
-        duration: 0.35,
-        ease: "power2.out",
-      });
+      if (!isActive) gsap.to(wrap, { opacity: 0.35, duration: 0.25 });
     };
 
     wrap.addEventListener("mouseenter", onMouseEnter);
     wrap.addEventListener("mouseleave", onMouseLeave);
-
-    const isTouchDevice = window.matchMedia(
-      "(hover: none) and (pointer: coarse)",
-    ).matches;
-    if (!isTouchDevice) {
-      wrap.addEventListener("mousemove", onMouseMove);
-    }
-
     return () => {
       wrap.removeEventListener("mouseenter", onMouseEnter);
       wrap.removeEventListener("mouseleave", onMouseLeave);
-      wrap.removeEventListener("mousemove", onMouseMove);
     };
   }, [isActive]);
 
   return (
-    <li className={styles.navItem} ref={wrapRef} onClick={() => onClick(label)}>
-      <span
-        ref={textRef}
-        className={`${styles.navLinkInner} ${isActive ? styles.navLinkActive : styles.navLinkInactive}`}
-      >
-        {label}
-        <span ref={underlineRef} className={styles.underline} />
+    <li
+      ref={wrapRef}
+      className={`${styles.navItem} ${isActive ? styles.navLinkActive : styles.navLinkInactive}`}
+      onClick={() => onClick(label)}
+    >
+      {/* clip window */}
+      <span className={styles.clipWindow}>
+        <span data-top className={styles.labelTop}>
+          {label}
+        </span>
+        <span data-bottom className={styles.labelBottom}>
+          {label}
+        </span>
       </span>
+      <span data-underline className={styles.underline} />
     </li>
   );
 }
@@ -277,7 +267,7 @@ export default function Navbar() {
         {/* Desktop links */}
         <ul ref={linksRef} className={styles.navLinks} role="list">
           {NAV_LINKS.map((label) => (
-            <MagneticLink
+            <NavLink
               key={label}
               label={label}
               isActive={activeLink === label}

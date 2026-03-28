@@ -63,7 +63,7 @@ export default function Hero() {
           </span>
           <span className={styles.lineWrapper}>
             <span className={styles.line}>
-              I build clean &amp; interactive web interfaces
+              I build clean &amp; interactive web&nbsp;interfaces
             </span>
           </span>
         </h1>

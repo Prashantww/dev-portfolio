@@ -172,7 +172,7 @@
 
   .textPane {
     flex: unset;
-    padding: 120px 28px 48px 28px; /* top clears the fixed navbar */
+    padding: 160px 28px 48px 28px; /* top clears the fixed navbar */
     justify-content: flex-start;
   }
 
@@ -212,7 +212,7 @@
 
 @media (max-width: 480px) {
   .textPane {
-    padding: 110px 24px 40px 24px;
+    padding: 160px 24px 40px 24px;
   }
   /* .heading {
     font-size: 28px;
