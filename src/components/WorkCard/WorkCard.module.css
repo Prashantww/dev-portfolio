@@ -2,11 +2,17 @@
 
 .card {
   background: #0a0a0a;
-  /* border-radius: 6px; */
+
   flex-shrink: 0;
 
   /* width + height driven by inline style from parent */
   /* overflow hidden ready for when content is added */
   overflow: hidden;
   position: relative;
+}
+
+.mobile {
+  width: 100%;
+  aspect-ratio: 340 / 478;
+  border-radius: 6px;
 }
