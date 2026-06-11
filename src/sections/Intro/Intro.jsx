@@ -30,7 +30,7 @@ export default function Intro() {
       .timeline({
         scrollTrigger: {
           trigger: section,
-          start: "top 85%",
+          start: "top 65%",
           end: "top 30%",
           once: true,
           // markers: true,
@@ -40,7 +40,7 @@ export default function Intro() {
       .to(lines, {
         y: 0,
         filter: "blur(0px)",
-        duration: 1.2,
+        duration: 1.8,
         stagger: 0.5,
 
         ease: "power3.out",

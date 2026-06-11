@@ -2,13 +2,15 @@ import React from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import Hero from "../../sections/Hero";
 import Intro from "../../sections/Intro";
+import FeaturedWork from "../../sections/FeaturedWork/FeaturedWork";
 
 const Home = () => {
   return (
     <>
       <Hero />
       <Intro />
-      <div style={{ width: "100%", height: "100vh", background: "#0a0a0a" }} />
+      <FeaturedWork />
+      <div style={{ width: "100%", height: "100vh", background: "#ffffff" }} />
     </>
   );
 };

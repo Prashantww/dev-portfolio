@@ -1,0 +1,12 @@
+/* WorkCard.module.css */
+
+.card {
+  background: #0a0a0a;
+  /* border-radius: 6px; */
+  flex-shrink: 0;
+
+  /* width + height driven by inline style from parent */
+  /* overflow hidden ready for when content is added */
+  overflow: hidden;
+  position: relative;
+}

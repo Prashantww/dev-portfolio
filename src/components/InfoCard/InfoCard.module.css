@@ -1,0 +1,79 @@
+/* InfoCard.module.css */
+
+.card {
+  background: #0a0a0a;
+  flex-shrink: 0;
+  overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
+
+  /* width + height driven by GSAP from FeaturedWork */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px 20px;
+}
+
+/* ── Top section ──────────────────────────────────────────────────────────── */
+.top {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.title {
+  font-family: "Outfit", sans-serif;
+  font-size: clamp(16px, 1.4vw, 22px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin: 0;
+}
+
+.desc {
+  font-family: "Outfit", sans-serif;
+  font-size: clamp(11px, 0.85vw, 13px);
+  font-weight: 300;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.45);
+  margin: 0;
+}
+
+/* ── Bottom section ───────────────────────────────────────────────────────── */
+.bottom {
+  background: #161616;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+
+  /* height grows to fill remaining space */
+  flex: 1;
+  margin-top: 16px;
+  max-height: 120px;
+}
+
+.allWork {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Outfit", sans-serif;
+  font-size: clamp(11px, 0.9vw, 14px);
+  font-weight: 400;
+  color: #ffffff;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  letter-spacing: 0.01em;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #7c3aed;
+  display: inline-block;
+  flex-shrink: 0;
+}
