@@ -1,5 +1,6 @@
 import WorkCard from "../../../components/WorkCard/WorkCard";
 import styles from "./FeaturedWorkMobile.module.css";
+import { projects } from "../../../data/projects";
 
 const PROJECTS = [1, 2, 3, 4];
 
@@ -16,8 +17,8 @@ export default function FeaturedWorkMobile() {
       </div>
 
       <div className={styles.scroller}>
-        {PROJECTS.map((project) => (
-          <WorkCard key={project} mobile />
+        {projects.map((project) => (
+          <WorkCard key={project.title} project={project} mobile />
         ))}
       </div>
 

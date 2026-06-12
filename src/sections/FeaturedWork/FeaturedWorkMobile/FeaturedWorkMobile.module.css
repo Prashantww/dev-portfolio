@@ -57,7 +57,7 @@
 }
 
 .scroller > * {
-  flex: 0 0 70%;
+  flex: 0 0 78%;
   scroll-snap-align: start;
 }
 

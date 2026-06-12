@@ -1,18 +1,53 @@
-/* WorkCard.module.css */
-
 .card {
   background: #0a0a0a;
 
   flex-shrink: 0;
 
-  /* width + height driven by inline style from parent */
-  /* overflow hidden ready for when content is added */
   overflow: hidden;
   position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .mobile {
   width: 100%;
   aspect-ratio: 340 / 478;
   border-radius: 6px;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  padding: 12px;
+
+  display: flex;
+  align-items: flex-start;
+}
+
+.tags {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.tags span {
+  width: fit-content;
+
+  padding: 10px 14px;
+  border-radius: 2px;
+
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  color: white;
 }

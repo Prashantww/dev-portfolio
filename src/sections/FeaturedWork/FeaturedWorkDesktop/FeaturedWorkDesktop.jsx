@@ -3,6 +3,7 @@ import gsap from "gsap";
 import WorkCard from "../../../components/WorkCard/WorkCard";
 import InfoCard from "../../../components/InfoCard/InfoCard";
 import styles from "./FeaturedWorkDesktop.module.css";
+import { projects } from "../../../data/projects";
 
 // ── Card size definitions ────────────────────────────────────────────────────
 const RATIO = {
@@ -169,9 +170,10 @@ export default function FeaturedWork() {
           onMouseEnter={handleInfoEnter}
           onMouseLeave={handleCardLeave}
         />
-        {Array.from({ length: CARD_COUNT }).map((_, i) => (
+        {projects.map((project, i) => (
           <WorkCard
-            key={i}
+            key={project.title}
+            project={project}
             cardRef={cardRefs.current[i]}
             onMouseEnter={() => handleCardEnter(i)}
             onMouseLeave={handleCardLeave}
