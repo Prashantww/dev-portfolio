@@ -3,6 +3,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import Hero from "../../sections/Hero";
 import Intro from "../../sections/Intro";
 import FeaturedWork from "../../sections/FeaturedWork/FeaturedWork";
+import About from "../../sections/About/About";
 
 const Home = () => {
   return (
@@ -10,7 +11,8 @@ const Home = () => {
       <Hero />
       <Intro />
       <FeaturedWork />
-      <div style={{ width: "100%", height: "100vh", background: "#ffffff" }} />
+      <About />
+      <div style={{ width: "100%", height: "100vh", background: "#000000" }} />
     </>
   );
 };

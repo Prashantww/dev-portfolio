@@ -5,7 +5,7 @@
   width: 100%;
   background: #fafaf2;
   color: #ffffff;
-  height: 100vh;
+  height: 80vh;
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -28,7 +28,6 @@
 }
 
 .title {
-  font-family: "Outfit", sans-serif;
   font-size: 22px;
   font-weight: 600;
   letter-spacing: -0.02em;
@@ -37,7 +36,6 @@
 }
 
 .desc {
-  font-family: "Outfit", sans-serif;
   font-size: 13px;
   font-weight: 300;
   line-height: 1.6;
