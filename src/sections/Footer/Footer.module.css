@@ -1,0 +1,211 @@
+/* Footer.module.css */
+
+/* ── Base ─────────────────────────────────────────────────────────────────── */
+.footer {
+  width: 100%;
+  background: #111111;
+  color: #ffffff;
+  box-sizing: border-box;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════ */
+/* ── DESKTOP HERO (visible on desktop only) ──────────────────────────────── */
+/* ══════════════════════════════════════════════════════════════════════════ */
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 52px;
+  box-sizing: border-box;
+}
+
+.meta {
+  position: absolute;
+  top: 48px;
+  right: 52px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  font-size: 12px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.02em;
+}
+
+.cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.ctaLabel {
+  font-size: clamp(14px, 6.2vw, 34px);
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+.email {
+  font-size: clamp(28px, 5vw, 72px);
+  font-weight: 500;
+  color: #ffffff;
+  text-decoration: none;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  transition: opacity 0.2s ease;
+}
+
+.email:hover {
+  opacity: 0.7;
+}
+
+.heroLinks {
+  display: flex;
+  gap: 48px;
+  margin-top: 16px;
+}
+
+.heroLink {
+  font-size: clamp(12px, 4vw, 21px);
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  transition: color 0.2s ease;
+}
+
+.heroLink:hover {
+  color: #ffffff;
+}
+
+/* Grid + bottom hidden on desktop */
+.grid {
+  display: none;
+}
+.bottom {
+  display: none;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════ */
+/* ── TABLET (≤ 1024px) ───────────────────────────────────────────────────── */
+/* ══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  /* Hide desktop hero */
+  .hero {
+    display: none;
+  }
+
+  /* Show grid + bottom */
+  .grid {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    padding: 52px 40px 32px;
+    box-sizing: border-box;
+  }
+
+  .bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    /* padding: 0 40px 40px; */
+    box-sizing: border-box;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 0 40px;
+    padding-top: 15px;
+  }
+
+  .col {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+  }
+
+  .colTitle {
+    font-size: 15px;
+    font-weight: 500;
+    color: #ffffff;
+    letter-spacing: 0.01em;
+  }
+
+  .colLink {
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    line-height: 1.5;
+  }
+
+  .colLink:hover {
+    color: #ffffff;
+  }
+
+  .bottomResume {
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.6;
+  }
+
+  .resumeLink {
+    color: #ffffff;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: opacity 0.2s ease;
+  }
+
+  .resumeLink:hover {
+    opacity: 0.7;
+  }
+
+  .copy {
+    font-size: 12px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.3);
+    margin: 0;
+    text-align: center;
+    padding-bottom: 8px;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════ */
+/* ── MOBILE (≤ 768px) ────────────────────────────────────────────────────── */
+/* ══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .grid {
+    flex-direction: row; /* ← side by side */
+    flex-wrap: wrap; /* ← contact wraps below */
+    gap: 32px;
+    padding: 48px 24px 28px;
+  }
+
+  /* Site Index + Social take equal space side by side */
+  .col:nth-child(1),
+  .col:nth-child(2) {
+    flex: 1;
+  }
+
+  /* Contact goes full width below */
+  .col:nth-child(3) {
+    flex: 0 0 100%;
+  }
+}
+
+@media (max-width: 430px) {
+  .grid {
+    padding: 40px 20px 24px;
+  }
+
+  .bottom {
+    margin: 0 20px;
+  }
+}
